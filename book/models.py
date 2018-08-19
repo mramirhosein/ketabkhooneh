@@ -33,7 +33,7 @@ class Book(models.Model):
     isbn = models.CharField(max_length=13,help_text='13 chararcter <a href="https://www.isbn-international.org/content/what-isbn">ISBN</a>')
     genre = models.ManyToManyField(Genre, help_text='Select a genre for this book.')
     language = models.ManyToManyField(Language, help_text='Select a language for this book.')
-    author = models.ManyToManyField(Author)
+    author = models.ForeignKey(Author,on_delete=models.SET_NULL,null=True)
 
     def __str__(self):
         return self.title
